@@ -38,60 +38,40 @@ data = [
 ]
 
 A = random.choice(data)
+sayac =0
 
 def newdata():
-  global B
-  B = random.choice([item for item in data if item is not A])  # seçimi a ya eşit olmadan datalardan seç
-  Bdict = {'name': B["name"] , 'famous_work': B["famous_work"]}
-  return Bdict
+    global B
+    B = random.choice([item for item in data if item is not A])  # seçimi a ya eşit olmadan datalardan seç
+    Bdict = {'name': B["name"] , 'famous_work': B["famous_work"]}
+    return Bdict
 
 def fsonuc():
-  if A["famous_work"] >= B["famous_work"]:
-    sonuc = "A"
-  else:
-    sonuc = "B"
-  return sonuc
+    if A["famous_work"] >= B["famous_work"]:
+        sonuc = "A"
+    else:
+        sonuc = "B"
+
+    return sonuc
 
 def game():
-  global A
-  print(A)
 
-  Bdict = newdata()
-  # global B
-  print(Bdict)
+    global A
+    print(A)
 
-  secim = input(f"Who is more flower? A or B: ")
-  if secim == fsonuc():
-    print("doğru")
-    A = B
-    game()
-  else:
-    print(f"yanlış ")
+    global sayac
+
+    Bdict = newdata()
+    # global B
+    print(Bdict)
+
+    secim = input(f"Who is more flower? A or B: ")
+    sayac += 1
+    if secim == fsonuc():
+        print(f"Doğru: {sayac}")
+        A = B
+        game()
+    else:
+        print(f"Tekrar deneyiniz, skorunuz: {sayac} ")
 
 game()
-
-
-# Hangi ülke daha kalabalık, bul bakalım? (Ülkelerin nüfuslarının kaç milyon olduğunu bulma oyunu)
-
-# data = [
-#     {'name': 'United States', 'population': 331, 'continent': 'North America'},
-#     {'name': 'China', 'population': 1444, 'continent': 'Asia'},
-#     {'name': 'India', 'population': 1393, 'continent': 'Asia'},
-#     {'name': 'Brazil', 'population': 214, 'continent': 'South America'},
-#     {'name': 'Nigeria', 'population': 211, 'continent': 'Africa'},
-#     {'name': 'Russia', 'population': 144, 'continent': 'Europe/Asia'},
-#     {'name': 'Japan', 'population': 126, 'continent': 'Asia'},
-#     {'name': 'Germany', 'population': 83, 'continent': 'Europe'},
-#     {'name': 'United Kingdom', 'population': 67, 'continent': 'Europe'},
-#     {'name': 'France', 'population': 65, 'continent': 'Europe'},
-#     {'name': 'Canada', 'population': 38, 'continent': 'North America'},
-#     {'name': 'Australia', 'population': 26, 'continent': 'Australia'},
-#     {'name': 'Italy', 'population': 60, 'continent': 'Europe'},
-#     {'name': 'South Korea', 'population': 52, 'continent': 'Asia'},
-#     {'name': 'Mexico', 'population': 126, 'continent': 'North America'},
-#     {'name': 'Spain', 'population': 47, 'continent': 'Europe'},
-#     {'name': 'Turkey', 'population': 84, 'continent': 'Asia/Europe'},
-#     {'name': 'Egypt', 'population': 104, 'continent': 'Africa'},
-#     {'name': 'South Africa', 'population': 59, 'continent': 'Africa'},
-#     {'name': 'Argentina', 'population': 45, 'continent': 'South America'}
-# ]
